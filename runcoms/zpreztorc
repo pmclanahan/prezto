@@ -27,10 +27,18 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'terminal' \
   'editor' \
+  'syntax-highlighting' \
   'history' \
+  'history-substring-search' \
+  'homebrew' \
+  'osx' \
+  'git' \
+  'python' \
   'directory' \
   'spectrum' \
+  'gnu-utility' \
   'utility' \
+  'tmux' \
   'completion' \
   'prompt'
 
@@ -42,7 +50,7 @@ zstyle ':prezto:load' pmodule \
 zstyle ':prezto:module:editor' key-bindings 'emacs'
 
 # Auto convert .... to ../..
-# zstyle ':prezto:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 #
 # Git
@@ -85,7 +93,8 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'paradox'
+#zstyle ':prezto:module:prompt' theme 'steeef'
 
 #
 # Ruby
@@ -117,12 +126,12 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
-# zstyle ':prezto:module:syntax-highlighting' highlighters \
-#   'main' \
-#   'brackets' \
-#   'pattern' \
-#   'cursor' \
-#   'root'
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+  'main' \
+  'brackets' \
+  'pattern' \
+  'cursor' \
+  'root'
 #
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
@@ -135,23 +144,23 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 #
 
 # Auto set the tab and window titles.
-# zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
-# zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
-# zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 #
 # Tmux
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-# zstyle ':prezto:module:tmux:auto-start' local 'yes'
+#zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
-# zstyle ':prezto:module:tmux:auto-start' remote 'yes'
+#zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
 # zstyle ':prezto:module:tmux:iterm' integrate 'yes'

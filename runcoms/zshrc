@@ -10,4 +10,64 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+export DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+
+# virtualenvwrapper and pip
+case "$OSTYPE" in
+  darwin*) OS=mac ;;
+  linux*)  OS=linux ;;
+  *)       OS=unknown ;;
+esac
+
+case "$OS" in
+  mac)
+    PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:~/b2g-files/adt-bundle-mac/sdk/platform-tools:~/b2g-files/adt-bundle-mac/sdk/tools:$PATH
+    export NODE_PATH="/usr/local/lib/node_modules:${NODE_PATH}"
+    fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/site-functions $fpath)
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+    export NOSE_PROGRESSIVE_EDITOR_SHORTCUT_TEMPLATE='  {dim_format}charm://{path}:{line_number}{normal}{function_format}{hash_if_function}{function}{normal}'
+    unalias run-help 2> /dev/null
+    autoload run-help
+    HELPDIR=/usr/local/share/zsh/helpfiles
+    export ARCHFLAGS="-arch x86_64"
+    ;;
+  linux)
+    ;;
+esac
+
+export PIP_USE_WHEEL=true
+export PIP_WHEEL_DIR=$HOME/.pip/wheels
+export PIP_FIND_LINKS=$PIP_WHEEL_DIR
+export PROJECTS_HOME=$HOME/Projects
+export PROJECT_HOME=$PROJECTS_HOME
+export PIP_RESPECT_VIRTUALENV=true
+export WORKON_HOME=$HOME/.virtualenvs
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+export ADDON_SDK_PATH=$HOME/src/addon-sdk
+
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+elif [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
+    source /usr/local/share/python/virtualenvwrapper.sh
+fi
+
+source ~/.bash_aliases
+if [ -f ~/.zsh_local ]; then
+    source ~/.zsh_local
+fi
+
+# pip completion
+eval "$(pip completion --zsh)"
+eval "$(hub alias -s)"
+
+# added by travis gem
+[ -f /Users/pmclanahan/.travis/travis.sh ] && source /Users/pmclanahan/.travis/travis.sh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export BYOBU_PREFIX=$(brew --prefix)
+
+source /usr/local/share/zsh/site-functions/_aws
