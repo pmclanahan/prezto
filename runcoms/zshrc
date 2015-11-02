@@ -70,4 +70,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 export BYOBU_PREFIX=$(brew --prefix)
 
-source /usr/local/share/zsh/site-functions/_aws
+if [ -f /usr/local/share/zsh/site-functions/_aws ]; then
+    source /usr/local/share/zsh/site-functions/_aws
+fi
