@@ -73,3 +73,12 @@ export BYOBU_PREFIX=$(brew --prefix)
 if [ -f /usr/local/share/zsh/site-functions/_aws ]; then
     source /usr/local/share/zsh/site-functions/_aws
 fi
+
+sha1certcheck() {
+  cert_type=$( : | openssl s_client -connect ${1}:443 -ssl3 -cipher 'DES-CBC3-SHA' 2>/dev/null <<< Q | openssl x509 -text | grep 'Signature Algorithm' | cut -d ':' -f 2 | uniq)
+  if [ "${cert_type:1}" = "sha1WithRSAEncryption" ]; then
+    echo "All's well"
+  else
+    echo "Bad cert type: $cert_type"
+  fi
+}
