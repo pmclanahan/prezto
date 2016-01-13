@@ -58,8 +58,6 @@ if [ -f ~/.zsh_local ]; then
     source ~/.zsh_local
 fi
 
-# pip completion
-eval "$(pip completion --zsh)"
 eval "$(hub alias -s)"
 
 # added by travis gem
