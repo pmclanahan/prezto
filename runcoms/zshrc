@@ -31,6 +31,7 @@ case "$OS" in
     autoload run-help
     HELPDIR=/usr/local/share/zsh/helpfiles
     export ARCHFLAGS="-arch x86_64"
+    export BYOBU_PREFIX=$(brew --prefix)
     ;;
   linux)
     ;;
@@ -53,6 +54,8 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 elif [ -f /usr/local/share/python/virtualenvwrapper.sh ]; then
     source /usr/local/share/python/virtualenvwrapper.sh
+elif [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
 source ~/.bash_aliases
@@ -67,8 +70,6 @@ eval "$(hub alias -s)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-export BYOBU_PREFIX=$(brew --prefix)
 
 if [ -f /usr/local/share/zsh/site-functions/_aws ]; then
     source /usr/local/share/zsh/site-functions/_aws
