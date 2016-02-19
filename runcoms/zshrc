@@ -38,8 +38,6 @@ case "$OS" in
 esac
 
 export PIP_USE_WHEEL=true
-export PIP_WHEEL_DIR=$HOME/.pip/wheels
-export PIP_FIND_LINKS=$PIP_WHEEL_DIR
 export PROJECTS_HOME=$HOME/Projects
 export PROJECT_HOME=$PROJECTS_HOME
 export PIP_RESPECT_VIRTUALENV=true
